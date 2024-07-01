@@ -26,6 +26,21 @@ public class VendasApplication {
             List<Cliente> todosClientes = clienteRepository.obterTodos();
             todosClientes.forEach(System.out::println);
 
+            todosClientes.forEach(c -> {
+                c.setNome(c.getNome()+" atualizado");
+                clienteRepository.atualizar(c);
+            });
+
+            todosClientes = clienteRepository.obterTodos();
+            todosClientes.forEach(System.out::println);
+
+            System.out.println("Deletar clientes");
+            todosClientes.forEach(c -> {
+                clienteRepository.deletar(c.getId());
+            });
+            todosClientes = clienteRepository.obterTodos();
+            todosClientes.forEach(System.out::println);
+
         };
     }
     public static void main(String[] args) {
