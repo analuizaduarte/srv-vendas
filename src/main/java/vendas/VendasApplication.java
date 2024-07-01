@@ -1,5 +1,7 @@
 package vendas;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,9 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class VendasApplication {
 
+    @Autowired
+    @Qualifier("applicationName") //injecao do bean configurado na classe MinhaConfiguration
+    private String applicationName;
     @GetMapping("/hello") // Faz o mapeamento do endpoint hello para retornar a mensagem do método abaixo
-    public String helloWorld(){
-        return "Hello World";
+    public String chamadaBean(){
+        return applicationName;
     }
     public static void main(String[] args) {
 
