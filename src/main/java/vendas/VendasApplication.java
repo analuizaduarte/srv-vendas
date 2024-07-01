@@ -9,17 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
-@RestController
 public class VendasApplication {
-
-   @Value("${application.name}")
-    private String applicationName;
-    @GetMapping("/hello") // Faz o mapeamento do endpoint hello para retornar a mensagem do método abaixo
-    public String chamadaBean(){
-        return applicationName;
-    }
     public static void main(String[] args) {
-
         SpringApplication.run(VendasApplication.class, args);
     }
 }
